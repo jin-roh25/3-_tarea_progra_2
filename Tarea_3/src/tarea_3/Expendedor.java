@@ -1,4 +1,5 @@
 package tarea_3;
+import java.awt.*;
 import java.util.ArrayList;
 import javax.swing.*;
 
@@ -24,6 +25,13 @@ public class Expendedor extends JPanel{
             }
         }
         precioBebidas = precio;
+    }
+    
+    @Override
+        public void paint(Graphics g){
+            super.paint(g);
+        
+            g.drawRect(200,200, 50, 50);
     }
     
     public int getPrecioBebidas() {

@@ -1,4 +1,5 @@
 package tarea_3;
+import java.awt.*;
 import javax.swing.*;
 
 public class Comprador extends JPanel{
@@ -16,7 +17,20 @@ public class Comprador extends JPanel{
 		sabor = "";
 	}
 
+        public void setMoneda(Moneda moneda){
+            this.m = moneda;
+        }
         
+        public void setNumBebida(int numBebida){
+            this.numBebida = numBebida;
+        }
+        
+        @Override
+        public void paint(Graphics g){
+            super.paint(g);
+        
+            g.drawRect(100,100, 50, 50);
+        }
         
 	public void comprar() {
             
