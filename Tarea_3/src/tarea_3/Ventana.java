@@ -13,7 +13,8 @@ public class Ventana extends JFrame {
 		this.setVisible(true);
 
 		Panel p = new Panel();
-		this.add(p, BorderLayout.CENTER);
+                Ok_I_Pull_Up ok = new Ok_I_Pull_Up();
+		this.add(ok, BorderLayout.CENTER);
 	}
 
 }
