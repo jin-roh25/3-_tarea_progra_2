@@ -13,7 +13,7 @@ public class PanelPrincipal extends JPanel{
     
     public PanelPrincipal(){ 
         exp = new Expendedor(4,200);
-        com = new Comprador(); 
+        com = new Comprador(null,exp,0); 
         this.setBackground(Color.white); 
     } 
     /*public void paint (Graphics g) {  //todo se dibuja a partir de este método 

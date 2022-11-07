@@ -1,7 +1,8 @@
 package tarea_3;
 import java.util.ArrayList;
+import javax.swing.*;
 
-public class Expendedor {
+public class Expendedor extends JPanel{
 
     private ArrayList<Bebida>[] depBebida;
     private int precioBebidas;

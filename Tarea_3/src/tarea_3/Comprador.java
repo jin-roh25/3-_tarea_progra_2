@@ -1,6 +1,7 @@
 package tarea_3;
+import javax.swing.*;
 
-public class Comprador {
+public class Comprador extends JPanel{
 
 	private Moneda m;
 	private Expendedor exp;
@@ -15,6 +16,8 @@ public class Comprador {
 		sabor = "";
 	}
 
+        
+        
 	public void comprar() {
             
             try{
