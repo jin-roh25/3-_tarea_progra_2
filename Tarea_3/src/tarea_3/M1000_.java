@@ -1,10 +1,10 @@
 package tarea_3;
 
-public class M1000 extends javax.swing.JPanel {
+public class M1000_ extends javax.swing.JPanel {
     
     private Moneda1000 m;
 
-    public M1000() {
+    public M1000_() {
         m = new Moneda1000();
         initComponents();
     }

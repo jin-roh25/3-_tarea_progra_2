@@ -1,11 +1,11 @@
 package tarea_3;
 
-public class M1500 extends javax.swing.JPanel {
+public class M100_ extends javax.swing.JPanel {
     
-    private Moneda1500 m;
+    private Moneda100 m;
 
-    public M1500() {
-        m = new Moneda1500();
+    public M100_() {
+        m = new Moneda100();
         initComponents();
     }
     
@@ -19,7 +19,7 @@ public class M1500 extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Moneda1500.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Moneda100.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
