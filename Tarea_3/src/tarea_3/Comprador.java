@@ -35,7 +35,8 @@ public class Comprador extends JPanel{
 	public void comprar() {
             
             try{
-                this.beber(exp.comprarBebida(m, numBebida));
+                exp.comprarBebida(m, numBebida);
+                this.beber(exp.getBebida());
             }catch(Exception e){
                 System.out.print("");
             }

@@ -8,8 +8,10 @@ public class Expendedor extends JPanel{
     private ArrayList<Bebida>[] depBebida;
     private int precioBebidas;
     private int depositoMonedas;
+    private Bebida bebida;
 
     public Expendedor(int cantidadPorDep, int precio) {
+        bebida = null;
         depBebida = new ArrayList[3];
         depositoMonedas = 0;
         for (int i = 0; i < 3; i++) {
@@ -43,7 +45,7 @@ public class Expendedor extends JPanel{
             moneda.toString();
         }catch(Exception e){
             System.out.println("Error,PagoIncorrectoException");
-            this.getBebida(null);
+            this.bebida = null;
         }
         try{
             if(numBebida<1||numBebida>3){
@@ -52,30 +54,30 @@ public class Expendedor extends JPanel{
         }catch(Exception e){
             depositoMonedas += moneda.getValor();
             System.out.println("Error,DepositoInexistenteException");
-            this.getBebida(null);
+            this.bebida = null;
         }
         try{
             if(moneda.getValor()>this.precioBebidas){
                         depositoMonedas = moneda.getValor() - this.precioBebidas;
-                        this.getBebida(depBebida[numBebida-1].remove(0));
+                        this.bebida = depBebida[numBebida-1].remove(0);
 
             }else if(moneda.getValor()<this.precioBebidas){
                     depositoMonedas += moneda.getValor();
                     System.out.println("Error,PagoInsuficienteException");
-                    this.getBebida(null);
+                    this.bebida = null;
             }else{
-                    this.getBebida(depBebida[numBebida-1].remove(0));
+                    this.bebida = depBebida[numBebida-1].remove(0);
             }
         }catch(Exception e){
             depositoMonedas = 0;
             depositoMonedas += moneda.getValor();
             System.out.println("Error,NoHayBebidaException");
-            this.getBebida(null);
+            this.bebida = null;
         }
     }
     
-    public Bebida getBebida(Bebida bebida){
-        return bebida;
+    public Bebida getBebida(){
+        return this.bebida;
     }
 
     public Moneda getVuelto() {
