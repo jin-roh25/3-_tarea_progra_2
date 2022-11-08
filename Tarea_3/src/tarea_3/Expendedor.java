@@ -38,12 +38,12 @@ public class Expendedor extends JPanel{
         return precioBebidas;
     }
 
-    public Bebida comprarBebida(Moneda moneda,int numBebida) {
+    public void comprarBebida(Moneda moneda,int numBebida) {
         try{
             moneda.toString();
         }catch(Exception e){
             System.out.println("Error,PagoIncorrectoException");
-            return null;
+            this.getBebida(null);
         }
         try{
             if(numBebida<1||numBebida>3){
@@ -52,26 +52,30 @@ public class Expendedor extends JPanel{
         }catch(Exception e){
             depositoMonedas += moneda.getValor();
             System.out.println("Error,DepositoInexistenteException");
-            return null;
+            this.getBebida(null);
         }
         try{
             if(moneda.getValor()>this.precioBebidas){
                         depositoMonedas = moneda.getValor() - this.precioBebidas;
-                        return depBebida[numBebida-1].remove(0);
+                        this.getBebida(depBebida[numBebida-1].remove(0));
 
             }else if(moneda.getValor()<this.precioBebidas){
                     depositoMonedas += moneda.getValor();
                     System.out.println("Error,PagoInsuficienteException");
-                    return null;
+                    this.getBebida(null);
             }else{
-                    return depBebida[numBebida-1].remove(0);
+                    this.getBebida(depBebida[numBebida-1].remove(0));
             }
         }catch(Exception e){
             depositoMonedas = 0;
             depositoMonedas += moneda.getValor();
             System.out.println("Error,NoHayBebidaException");
-            return null;
+            this.getBebida(null);
         }
+    }
+    
+    public Bebida getBebida(Bebida bebida){
+        return bebida;
     }
 
     public Moneda getVuelto() {
