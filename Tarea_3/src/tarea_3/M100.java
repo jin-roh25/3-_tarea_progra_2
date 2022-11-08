@@ -1,12 +1,16 @@
 package tarea_3;
 
-public class Expendedor_GUI extends javax.swing.JPanel {
-
-    private Expendedor exp;
+public class M100 extends javax.swing.JPanel {
     
-    public Expendedor_GUI() {
-        exp = new Expendedor(3,600);
+    private Moneda100 m;
+
+    public M100() {
+        m = new Moneda100();
         initComponents();
+    }
+    
+    public int getValor(){
+        return m.getValor();
     }
 
     @SuppressWarnings("unchecked")
@@ -15,23 +19,21 @@ public class Expendedor_GUI extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Vending_Machine_400x400.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Moneda100.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
