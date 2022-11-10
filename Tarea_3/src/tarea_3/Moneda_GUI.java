@@ -21,6 +21,7 @@ public class Moneda_GUI extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
 
+        setOpaque(false);
         addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 formMouseDragged(evt);

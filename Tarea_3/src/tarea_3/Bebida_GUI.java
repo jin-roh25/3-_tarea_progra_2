@@ -21,6 +21,7 @@ public class Bebida_GUI extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
 
+        setOpaque(false);
         addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 formMouseDragged(evt);
@@ -32,6 +33,7 @@ public class Bebida_GUI extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setBackground(new java.awt.Color(255, 242, 255));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/"+b.tomarBebida()+".png")));
         jLabel1.setPreferredSize(new java.awt.Dimension(20, 34));
 
