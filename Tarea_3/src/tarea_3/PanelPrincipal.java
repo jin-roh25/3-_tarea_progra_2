@@ -15,12 +15,6 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
         this.setLayer(moneda_GUI1, DEFAULT_LAYER);
     }
 
-    @Override
-    protected void processEvent(AWTEvent e) {
-        super.processEvent(e);
-        System.out.println("process event");
-    }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
