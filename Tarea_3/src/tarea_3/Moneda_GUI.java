@@ -1,5 +1,7 @@
 package tarea_3;
 
+import java.awt.*;
+
 public class Moneda_GUI extends javax.swing.JPanel {
 
     private Moneda m;
@@ -13,6 +15,14 @@ public class Moneda_GUI extends javax.swing.JPanel {
     public void setMoneda(Moneda m) {
         this.m = m;
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Moneda" + m.getValor() + ".png")));
+    }
+
+    public Moneda getMoneda() {
+        return m;
+    }
+    
+    public Point getCenter(){
+        return new java.awt.Point(this.getX() + this.getWidth()/2,this.getY() + this.getHeight()/2);
     }
 
     @SuppressWarnings("unchecked")
@@ -30,6 +40,9 @@ public class Moneda_GUI extends javax.swing.JPanel {
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 formMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                formMouseReleased(evt);
             }
         });
 
@@ -60,6 +73,10 @@ public class Moneda_GUI extends javax.swing.JPanel {
         grbX = evt.getX();
         grbY = evt.getY();
     }//GEN-LAST:event_formMousePressed
+
+    private void formMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseReleased
+        this.getParent().getParent().dispatchEvent(evt);
+    }//GEN-LAST:event_formMouseReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

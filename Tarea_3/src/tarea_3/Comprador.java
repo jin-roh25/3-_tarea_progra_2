@@ -21,6 +21,10 @@ public class Comprador extends JPanel{
             this.m = moneda;
         }
         
+        public Moneda getMoneda(){
+            return m;
+        }
+        
         public void setNumBebida(int numBebida){
             this.numBebida = numBebida;
         }

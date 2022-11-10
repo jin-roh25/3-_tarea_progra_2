@@ -1,6 +1,6 @@
 package tarea_3;
 
-import java.time.LocalTime;
+import java.awt.*;
 
 public class Expendedor_GUI extends javax.swing.JPanel {
 
@@ -10,13 +10,21 @@ public class Expendedor_GUI extends javax.swing.JPanel {
         this.exp = new Expendedor(4, 200);
         initComponents();
     }
-    
-    public void setExpendedor(Expendedor exp){
+
+    public void setExpendedor(Expendedor exp) {
         this.exp = exp;
     }
-    
-    public Expendedor getExpendedor(){
+
+    public Expendedor getExpendedor() {
         return exp;
+    }
+
+    public boolean isInCoinSlot(Point p) {
+        return (p.x > this.getX() + 113
+                && p.x < this.getX() + 125
+                && p.y > this.getY() + 164
+                && p.y < this.getY() + 183);
+
     }
 
     @SuppressWarnings("unchecked")
