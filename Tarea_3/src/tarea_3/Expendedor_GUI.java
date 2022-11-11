@@ -5,6 +5,8 @@ import java.awt.*;
 public class Expendedor_GUI extends javax.swing.JPanel {
 
     private Expendedor exp;
+    private DepositoMoneda_GUI depMonedas;
+    private DepositoBebida_GUI depBebida;
 
     public Expendedor_GUI() {
         this.exp = new Expendedor(4, 200);

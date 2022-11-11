@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Expendedor {
 
     private final ArrayList<Bebida>[] depBebida;
-    private final ArrayList<Moneda> depositoMonedas;
+    private final ArrayList<Moneda> depositoMonedas;;
     private Bebida bebida;
     private int precioBebidas;
 
