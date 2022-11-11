@@ -46,7 +46,7 @@ public class Moneda_GUI extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Moneda"+ m.getValor() +".png")));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Moneda100.png"))); // NOI18N
         jLabel1.setPreferredSize(new java.awt.Dimension(30, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

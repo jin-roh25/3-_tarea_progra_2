@@ -34,7 +34,7 @@ public class Bebida_GUI extends javax.swing.JPanel {
         });
 
         jLabel1.setBackground(new java.awt.Color(255, 242, 255));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/"+b.tomarBebida()+".png")));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/CocaCola.png"))); // NOI18N
         jLabel1.setPreferredSize(new java.awt.Dimension(20, 34));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
