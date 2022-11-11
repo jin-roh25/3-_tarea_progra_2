@@ -1,91 +1,82 @@
 package tarea_3;
-import java.awt.*;
+
 import java.util.ArrayList;
-import javax.swing.*;
 
-public class Expendedor extends JPanel{
+public class Expendedor {
 
-    private ArrayList<Bebida>[] depBebida;
-    private int precioBebidas;
-    private int depositoMonedas;
+    private final ArrayList<Bebida>[] depBebida;
+    private final ArrayList<Moneda> depositoMonedas;
     private Bebida bebida;
+    private int precioBebidas;
 
     public Expendedor(int cantidadPorDep, int precio) {
         bebida = null;
         depBebida = new ArrayList[3];
-        depositoMonedas = 0;
+        depositoMonedas = new ArrayList();
         for (int i = 0; i < 3; i++) {
-            depBebida[i] = new ArrayList<Bebida>();
-            for(int j=0;j<cantidadPorDep;j++){
-                if(i==0){
-                    depBebida[i].add(new CanadaDry(j+1));
-                }else if(i==1){
-                    depBebida[i].add(new Pap(j+1));
-                }else if(i==2){
-                    depBebida[i].add(new CocaCola(j+1));
-                }
+            depBebida[i] = new ArrayList();
+            for (int j = 0; j < cantidadPorDep; j++) {
+                depBebida[i].add(new CanadaDry(j + 1));
             }
         }
         precioBebidas = precio;
     }
-    
-    @Override
-        public void paint(Graphics g){
-            super.paint(g);
-        
-            g.drawRect(200,200, 50, 50);
+
+    public void setPrecioBebida(int precio) {
+        precioBebidas = precio;
     }
-    
+
     public int getPrecioBebidas() {
         return precioBebidas;
     }
 
-    public void comprarBebida(Moneda moneda,int numBebida) {
-        try{
+    public void comprarBebida(Moneda moneda, int numBebida) {
+        try {
             moneda.toString();
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println("Error,PagoIncorrectoException");
             this.bebida = null;
         }
-        try{
-            if(numBebida<1||numBebida>3){
-                int x = 1/0;
+        try {
+            if (numBebida < 1 || numBebida > 3) {
+                int x = 1 / 0;
             }
-        }catch(Exception e){
-            depositoMonedas += moneda.getValor();
+        } catch (Exception e) {
+            depositoMonedas.add(moneda);
             System.out.println("Error,DepositoInexistenteException");
             this.bebida = null;
         }
-        try{
-            if(moneda.getValor()>this.precioBebidas){
-                        depositoMonedas = moneda.getValor() - this.precioBebidas;
-                        this.bebida = depBebida[numBebida-1].remove(0);
+        try {
+            if (moneda.getValor() > this.precioBebidas) {
+                for (int i = moneda.getValor() - this.precioBebidas; i > 0; i -= 100) {
+                    depositoMonedas.add(new Moneda100());
+                }
+                this.bebida = depBebida[numBebida - 1].remove(0);
 
-            }else if(moneda.getValor()<this.precioBebidas){
-                    depositoMonedas += moneda.getValor();
-                    System.out.println("Error,PagoInsuficienteException");
-                    this.bebida = null;
-            }else{
-                    this.bebida = depBebida[numBebida-1].remove(0);
+            } else if (moneda.getValor() < this.precioBebidas) {
+                depositoMonedas.add(moneda);
+                System.out.println("Error,PagoInsuficienteException");
+                this.bebida = null;
+            } else {
+                this.bebida = depBebida[numBebida - 1].remove(0);
             }
-        }catch(Exception e){
-            depositoMonedas = 0;
-            depositoMonedas += moneda.getValor();
+        } catch (Exception e) {
+            depositoMonedas.removeAll(depositoMonedas);
+            depositoMonedas.add(moneda);
             System.out.println("Error,NoHayBebidaException");
             this.bebida = null;
         }
     }
-    
-    public Bebida getBebida(){
+
+    public Bebida getBebida() {
         return this.bebida;
     }
 
     public Moneda getVuelto() {
-        if(depositoMonedas >= 100){
-            depositoMonedas -= 100;
-            return new Moneda100();
-        }else{
+        if(depositoMonedas.isEmpty()){
             return null;
+        }else{
+            return depositoMonedas.remove(0);
         }
     }
 }
