@@ -75,7 +75,7 @@ public class Moneda_GUI extends javax.swing.JPanel {
     }//GEN-LAST:event_formMousePressed
 
     private void formMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseReleased
-        this.getParent().getParent().dispatchEvent(evt);
+        this.getParent().dispatchEvent(evt);
     }//GEN-LAST:event_formMouseReleased
 
 
