@@ -6,7 +6,7 @@ public class Bebida_GUI extends javax.swing.JPanel {
     private int grbX, grbY;
 
     public Bebida_GUI() {
-        b = new CocaCola(-1);
+        b = new CanadaDry(-1);
         initComponents();
     }
 
@@ -22,6 +22,7 @@ public class Bebida_GUI extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
 
         setOpaque(false);
+        setPreferredSize(new java.awt.Dimension(21, 34));
         addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 formMouseDragged(evt);
@@ -32,25 +33,11 @@ public class Bebida_GUI extends javax.swing.JPanel {
                 formMousePressed(evt);
             }
         });
+        setLayout(null);
 
-        jLabel1.setBackground(new java.awt.Color(255, 242, 255));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/CocaCola.png"))); // NOI18N
-        jLabel1.setPreferredSize(new java.awt.Dimension(20, 34));
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/CanadaDry.png"))); // NOI18N
+        add(jLabel1);
+        jLabel1.setBounds(0, 0, 20, 34);
     }// </editor-fold>//GEN-END:initComponents
 
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged

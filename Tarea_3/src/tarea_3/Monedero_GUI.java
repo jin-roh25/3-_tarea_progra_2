@@ -1,7 +1,6 @@
 package tarea_3;
 
 import java.awt.*;
-import static java.awt.event.InputEvent.*;
 
 public class Monedero_GUI extends javax.swing.JPanel {
 
@@ -9,49 +8,49 @@ public class Monedero_GUI extends javax.swing.JPanel {
     private int monedaPorSacar;
 
     public Monedero_GUI() {
-        saldo = 2300;
+        saldo = 3600;
         monedaPorSacar = 0;
         initComponents();
+        this.setSize(mond.getWidth(), mond.getHeight());
     }
 
     public boolean isInMonedero(Point p) {
         return (p.x > this.getX()
                 && p.x < this.getX() + this.getWidth()
-                && p.y > this.getY()
+                && p.y > this.getY() + 28
                 && p.y < this.getY() + this.getHeight());
     }
 
     public void meterMoneda(Moneda_GUI m) {
         saldo += m.getMoneda().getValor();
+        mond.setText("$" + saldo);
     }
 
     public Moneda_GUI sacarMoneda() {
-        Moneda_GUI m = new Moneda_GUI();
         if (monedaPorSacar <= saldo) {
+            Moneda_GUI m = new Moneda_GUI();
             switch (monedaPorSacar) {
                 case 100 -> {
                     saldo -= 100;
-                    return m;
                 }
 
                 case 500 -> {
                     saldo -= 500;
                     m.setMoneda(new Moneda500());
-                    return m;
                 }
 
                 case 1000 -> {
                     saldo -= 1000;
                     m.setMoneda(new Moneda1000());
-                    return m;
                 }
 
                 case 1500 -> {
                     saldo -= 1500;
                     m.setMoneda(new Moneda1500());
-                    return m;
                 }
             }
+            mond.setText("$" + saldo);
+            return m;
         }
         return null;
 
@@ -61,68 +60,74 @@ public class Monedero_GUI extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        mond = new javax.swing.JLabel();
 
+        setPreferredSize(new java.awt.Dimension(80, 100));
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                formMouseDragged(evt);
+            }
+        });
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 formMousePressed(evt);
             }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                formMouseReleased(evt);
+            }
         });
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Monedero.png"))); // NOI18N
-        jLabel1.setToolTipText("");
-        jLabel1.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 204, 0));
-        jLabel2.setText("$" + String.valueOf(saldo));
-        jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        mond.setFont(new java.awt.Font("MV Boli", 0, 12)); // NOI18N
+        mond.setForeground(new java.awt.Color(0, 204, 0));
+        mond.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Monedero.png"))); // NOI18N
+        mond.setText("$" + String.valueOf(saldo));
+        mond.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        mond.setMaximumSize(new java.awt.Dimension(80, 100));
+        mond.setMinimumSize(new java.awt.Dimension(80, 100));
+        mond.setPreferredSize(new java.awt.Dimension(80, 100));
+        mond.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel2))
-                    .addComponent(jLabel1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(mond, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1))
+            .addComponent(mond, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
-        System.out.println(Integer.toBinaryString(evt.getModifiersEx()) + "  " + Integer.toBinaryString(BUTTON1_MASK));
 
-        this.getParent().dispatchEvent(evt);
-
-        if (evt.getX() < this.getWidth()) {
-            if (evt.getY() < this.getHeight()) {
-                monedaPorSacar = 100;
-            } else {
+        if (evt.getY() > 28 + (mond.getHeight() - 28) / 2) {
+            if (evt.getX() < mond.getWidth() / 2) {
                 monedaPorSacar = 500;
-            }
-        } else {
-            if (evt.getY() < this.getHeight()) {
-                monedaPorSacar = 1000;
             } else {
                 monedaPorSacar = 1500;
             }
+            this.getParent().dispatchEvent(evt);
+        } else if (evt.getY() > 28) {
+            if (evt.getX() < mond.getWidth() / 2) {
+                monedaPorSacar = 100;
+            } else {
+                monedaPorSacar = 1000;
+            }
+            this.getParent().dispatchEvent(evt);
         }
     }//GEN-LAST:event_formMousePressed
 
+    private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
+        this.getParent().dispatchEvent(evt);
+    }//GEN-LAST:event_formMouseDragged
+
+    private void formMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseReleased
+        this.getParent().dispatchEvent(evt);
+    }//GEN-LAST:event_formMouseReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel mond;
     // End of variables declaration//GEN-END:variables
 }

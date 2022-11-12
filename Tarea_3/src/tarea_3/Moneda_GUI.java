@@ -12,6 +12,11 @@ public class Moneda_GUI extends javax.swing.JPanel {
         initComponents();
     }
 
+    public void setGrb(int x, int y) {
+        grbX = x;
+        grbY = y;
+    }
+
     public void setMoneda(Moneda m) {
         this.m = m;
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Moneda" + m.getValor() + ".png")));
@@ -20,9 +25,9 @@ public class Moneda_GUI extends javax.swing.JPanel {
     public Moneda getMoneda() {
         return m;
     }
-    
-    public Point getCenter(){
-        return new java.awt.Point(this.getX() + this.getWidth()/2,this.getY() + this.getHeight()/2);
+
+    public Point getCenter() {
+        return new java.awt.Point(this.getX() + this.getWidth() / 2, this.getY() + this.getHeight() / 2);
     }
 
     @SuppressWarnings("unchecked")
@@ -32,6 +37,7 @@ public class Moneda_GUI extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
 
         setOpaque(false);
+        setPreferredSize(new java.awt.Dimension(30, 30));
         addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 formMouseDragged(evt);
@@ -45,24 +51,11 @@ public class Moneda_GUI extends javax.swing.JPanel {
                 formMouseReleased(evt);
             }
         });
+        setLayout(null);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Moneda100.png"))); // NOI18N
-        jLabel1.setPreferredSize(new java.awt.Dimension(30, 30));
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        add(jLabel1);
+        jLabel1.setBounds(0, 0, 30, 30);
     }// </editor-fold>//GEN-END:initComponents
 
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
