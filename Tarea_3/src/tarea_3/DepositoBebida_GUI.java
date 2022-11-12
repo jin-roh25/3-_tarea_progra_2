@@ -8,9 +8,9 @@ public class DepositoBebida_GUI extends javax.swing.JPanel {
 
     Bebida bebida;
     
-    public DepositoBebida_GUI(Bebida b) {
+    public DepositoBebida_GUI() {
         
-        bebida = b;
+        bebida = null;
         initComponents();
     }
     
@@ -37,7 +37,7 @@ public class DepositoBebida_GUI extends javax.swing.JPanel {
         setMaximumSize(new java.awt.Dimension(159, 39));
         setPreferredSize(new java.awt.Dimension(159, 39));
 
-        jLabel1.setIcon(this.inicioBebida());
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ExpendedorBebidas.jpg"))); // NOI18N
         jLabel1.setPreferredSize(new java.awt.Dimension(159, 39));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

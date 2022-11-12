@@ -27,7 +27,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
               <Component id="exp_GUI" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="228" max="32767" attributes="0"/>
+              <EmptySpace pref="149" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="moneda_GUI1" alignment="1" min="-2" max="-2" attributes="0"/>
                   <Component id="moneda_GUI2" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -38,6 +38,15 @@
                   <Component id="moneda_GUI4" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="243" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jButton3" linkSize="1" min="-2" pref="15" max="-2" attributes="0"/>
+                  <Component id="jButton2" linkSize="1" min="-2" pref="15" max="-2" attributes="0"/>
+                  <Component id="jButton1" linkSize="1" min="-2" pref="15" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -57,9 +66,15 @@
               <EmptySpace max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="155" max="32767" attributes="0"/>
+              <EmptySpace pref="55" max="32767" attributes="0"/>
               <Component id="exp_GUI" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="153" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+              <Component id="jButton1" linkSize="2" min="-2" pref="22" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jButton2" linkSize="2" min="-2" pref="22" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jButton3" linkSize="2" min="-2" pref="22" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -101,6 +116,42 @@
       <AuxValues>
         <AuxValue name="JLayeredPane.layer" type="java.lang.Integer" value="2"/>
       </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton1">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Images/CanadaDry.png"/>
+        </Property>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Default Cursor"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton1MouseClicked"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton2">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Images/CocaCola.png"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton2MouseClicked"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton3">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Images/Pap.png"/>
+        </Property>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Default Cursor"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton3MouseClicked"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

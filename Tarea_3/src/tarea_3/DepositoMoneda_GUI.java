@@ -8,9 +8,9 @@ public class DepositoMoneda_GUI extends javax.swing.JPanel {
     
     int numMonedas;
     
-    public DepositoMoneda_GUI(int num) {
+    public DepositoMoneda_GUI() {
         
-        numMonedas = num;
+        numMonedas = 0;
         initComponents();
     }
     
@@ -39,7 +39,7 @@ public class DepositoMoneda_GUI extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
 
-        jLabel1.setIcon(this.CantidadMonedas());
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/DepositoMoneda.jpg"))); // NOI18N
         jLabel1.setMaximumSize(new java.awt.Dimension(45, 45));
         jLabel1.setMinimumSize(new java.awt.Dimension(45, 45));
         jLabel1.setPreferredSize(new java.awt.Dimension(45, 45));
@@ -54,8 +54,6 @@ public class DepositoMoneda_GUI extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-
-        jLabel1.getAccessibleContext().setAccessibleName("");
     }// </editor-fold>//GEN-END:initComponents
 
 
