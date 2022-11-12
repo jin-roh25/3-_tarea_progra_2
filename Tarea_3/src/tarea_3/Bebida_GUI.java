@@ -8,6 +8,7 @@ public class Bebida_GUI extends javax.swing.JPanel {
     public Bebida_GUI() {
         b = new CanadaDry(-1);
         initComponents();
+        this.setSize(jLabel1.getSize());
     }
 
     public void setBebida(Bebida b) {
@@ -22,7 +23,6 @@ public class Bebida_GUI extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
 
         setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(21, 34));
         addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 formMouseDragged(evt);
