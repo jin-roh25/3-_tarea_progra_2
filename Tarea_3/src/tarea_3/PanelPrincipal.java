@@ -53,6 +53,7 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
                 jButton1MouseClicked(evt);
             }
         });
+        setLayer(jButton1, 1);
         add(jButton1);
         jButton1.setBounds(243, 354, 15, 22);
 
@@ -62,6 +63,7 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
                 jButton2MouseClicked(evt);
             }
         });
+        setLayer(jButton2, 1);
         add(jButton2);
         jButton2.setBounds(280, 330, 15, 22);
 
@@ -72,22 +74,30 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
                 jButton3MouseClicked(evt);
             }
         });
+        setLayer(jButton3, 1);
         add(jButton3);
         jButton3.setBounds(310, 350, 15, 22);
         add(monedero);
-        monedero.setBounds(350, 320, 80, 100);
+        monedero.setBounds(350, 260, 80, 100);
+        setLayer(moneda_GUI10, 2);
         add(moneda_GUI10);
-        moneda_GUI10.setBounds(350, 140, 30, 30);
+        moneda_GUI10.setBounds(460, 460, 30, 30);
+
+        moneda_GUI1.setMoneda(new Moneda1500());
+        setLayer(moneda_GUI1, 2);
         add(moneda_GUI1);
         moneda_GUI1.setBounds(270, 250, 30, 30);
+        setLayer(bebida_GUI2, 2);
         add(bebida_GUI2);
-        bebida_GUI2.setBounds(120, 330, 21, 34);
+        bebida_GUI2.setBounds(130, 390, 21, 34);
 
         bebida_GUI3.setBebida(new CocaCola(5));
+        setLayer(bebida_GUI3, 2);
         add(bebida_GUI3);
-        bebida_GUI3.setBounds(220, 260, 21, 34);
+        bebida_GUI3.setBounds(400, 160, 21, 34);
+        setLayer(bebida_GUI1, 2);
         add(bebida_GUI1);
-        bebida_GUI1.setBounds(50, 320, 20, 34);
+        bebida_GUI1.setBounds(60, 330, 20, 34);
 
         getAccessibleContext().setAccessibleName("");
     }// </editor-fold>//GEN-END:initComponents
@@ -150,7 +160,11 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
                 this.revalidate();
                 this.repaint();
             }
+        }else{
+            System.out.println(evt.getPoint());
         }
+        
+        
     }//GEN-LAST:event_formMousePressed
 
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
