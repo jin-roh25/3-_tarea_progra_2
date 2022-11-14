@@ -55,7 +55,7 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
         });
         setLayer(jButton1, 1);
         add(jButton1);
-        jButton1.setBounds(243, 354, 15, 22);
+        jButton1.setBounds(140, 80, 15, 22);
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/CocaCola.png"))); // NOI18N
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -65,7 +65,7 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
         });
         setLayer(jButton2, 1);
         add(jButton2);
-        jButton2.setBounds(280, 330, 15, 22);
+        jButton2.setBounds(160, 50, 15, 22);
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Pap.png"))); // NOI18N
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -76,7 +76,7 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
         });
         setLayer(jButton3, 1);
         add(jButton3);
-        jButton3.setBounds(310, 350, 15, 22);
+        jButton3.setBounds(170, 80, 15, 22);
         add(monedero);
         monedero.setBounds(350, 260, 80, 100);
         setLayer(moneda_GUI10, 2);
@@ -89,12 +89,12 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
         moneda_GUI1.setBounds(270, 250, 30, 30);
         setLayer(bebida_GUI2, 2);
         add(bebida_GUI2);
-        bebida_GUI2.setBounds(130, 390, 21, 34);
+        bebida_GUI2.setBounds(130, 390, 0, 0);
 
         bebida_GUI3.setBebida(new CocaCola(5));
         setLayer(bebida_GUI3, 2);
         add(bebida_GUI3);
-        bebida_GUI3.setBounds(400, 160, 21, 34);
+        bebida_GUI3.setBounds(400, 160, 0, 0);
         setLayer(bebida_GUI1, 2);
         add(bebida_GUI1);
         bebida_GUI1.setBounds(60, 330, 20, 34);
@@ -133,15 +133,24 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
     }//GEN-LAST:event_formMouseReleased
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        compr.setNumBebida(1);
+            compr.setNumBebida(1);
+            compr.comprar();
+            expendedor.entregarBebida();
+            expendedor.entregarVuelto();
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         compr.setNumBebida(2);
+        compr.comprar();
+        expendedor.entregarBebida();
+        expendedor.entregarVuelto();
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         compr.setNumBebida(3);
+        compr.comprar();
+        expendedor.entregarBebida();
+        expendedor.entregarVuelto();
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed

@@ -3,22 +3,22 @@ package tarea_3;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class Expendedor_GUI extends javax.swing.JPanel {
+public class Expendedor_GUI extends javax.swing.JLayeredPane {
 
     private Expendedor exp;
-    /*private ArrayList<Bebida_GUI>[] depositoBebidas;
+    private ArrayList<Bebida_GUI>[] depositoBebidas;
     private DepositoMoneda_GUI depMonedas;
-    private DepositoBebida_GUI depBebida;*/
+    private DepositoBebida_GUI depBebida;
 
     public Expendedor_GUI() {
         this.exp = new Expendedor(4, 200);
         initComponents();
-        /*depositoBebidas = new ArrayList[3];
+        depositoBebidas = new ArrayList[3];
         for (int i = 0; i < 3; i++) {
             depositoBebidas[i] = new ArrayList();
         }
-        depMonedas = new DepositoMoneda_GUI();
-        depBebida = new DepositoBebida_GUI();*/
+        depMonedas = null;
+        depBebida = null;
         jButton1.setLocation(40, 50);
         jButton1.setOpaque(false);
     }
@@ -39,13 +39,28 @@ public class Expendedor_GUI extends javax.swing.JPanel {
 
     }
     
-    /*public void entregarBebida(){
+    public void createDepBebida(){
+        if(depBebida==null){
+            depBebida = new DepositoBebida_GUI();
+        }
+    }
+    
+    public void createDepMoneda(){
+        if(depMonedas==null){
+            depMonedas = new DepositoMoneda_GUI();
+        }
+    }
+    public void entregarBebida(){
+    
+        this.createDepBebida();
         depBebida.setBebida(exp.getBebida());
     }
     
     public void entregarVuelto(){
+    
+        this.createDepMoneda();
         depMonedas.setCantMonedas(exp.getCantMonedas());
-    }*/
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -54,8 +69,6 @@ public class Expendedor_GUI extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-
-        setOpaque(false);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Vending_Machine.png"))); // NOI18N
 
@@ -66,6 +79,10 @@ public class Expendedor_GUI extends javax.swing.JPanel {
         });
 
         jButton2.setText("jButton2");
+
+        setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        setLayer(jButton1, javax.swing.JLayeredPane.PALETTE_LAYER);
+        setLayer(jButton2, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

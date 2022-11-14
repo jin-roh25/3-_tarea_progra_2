@@ -12,6 +12,8 @@ public class DepositoMoneda_GUI extends javax.swing.JPanel {
         
         numMonedas = 0;
         initComponents();
+        this.setLocation(WIDTH, WIDTH);
+        this.setSize(jLabel1.getSize());
     }
     
     public void setCantMonedas(int num){

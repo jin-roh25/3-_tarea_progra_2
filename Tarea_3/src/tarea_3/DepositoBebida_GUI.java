@@ -12,6 +12,7 @@ public class DepositoBebida_GUI extends javax.swing.JPanel {
         
         bebida = null;
         initComponents();
+        this.setSize(jLabel1.getSize());
     }
     
     public void setBebida(Bebida b){
