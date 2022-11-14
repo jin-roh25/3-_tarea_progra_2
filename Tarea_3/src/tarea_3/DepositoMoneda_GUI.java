@@ -22,13 +22,13 @@ public class DepositoMoneda_GUI extends javax.swing.JLayeredPane {
     
     public javax.swing.ImageIcon CantidadMonedas() {
         if(this.numMonedas>=3){
-            return new javax.swing.ImageIcon(getClass().getResource("/Images/DepositoMonedas" + 3 + ".png"));
+            return new javax.swing.ImageIcon(getClass().getResource("/Images/DepositoMonedas" + 3 + ".jpg"));
         }else if(this.numMonedas==2){
-            return new javax.swing.ImageIcon(getClass().getResource("/Images/DepositoMonedas" + 2 + ".png"));
+            return new javax.swing.ImageIcon(getClass().getResource("/Images/DepositoMonedas" + 2 + ".jpg"));
         }else if(this.numMonedas==1){
-            return new javax.swing.ImageIcon(getClass().getResource("/Images/DepositoMonedas" + 1 + ".png"));
+            return new javax.swing.ImageIcon(getClass().getResource("/Images/DepositoMonedas" + 1 + ".jpg"));
         }else if(this.numMonedas<=0){
-            return new javax.swing.ImageIcon(getClass().getResource("/Images/DepositoMoneda.png"));
+            return new javax.swing.ImageIcon(getClass().getResource("/Images/DepositoMoneda.jpg"));
         }else{
             return null;
         }

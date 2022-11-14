@@ -1,8 +1,6 @@
 package tarea_3;
-import java.awt.*;
-import javax.swing.*;
 
-public class Comprador extends JPanel{
+public class Comprador{
 
 	private Moneda m;
 	private Expendedor exp;
@@ -33,6 +31,7 @@ public class Comprador extends JPanel{
             
             try{
                 exp.comprarBebida(m, numBebida);
+                m = null;
                 this.beber(exp.getBebida());
             }catch(Exception e){
                 System.out.print("");
