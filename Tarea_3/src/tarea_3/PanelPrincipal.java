@@ -43,8 +43,10 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
                 formMouseReleased(evt);
             }
         });
+
+        expendedor.setBackground(java.awt.Color.white);
         add(expendedor);
-        expendedor.setBounds(0, 0, 320, 292);
+        expendedor.setBounds(-1, -1, 200, 300);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/CanadaDry.png"))); // NOI18N
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -137,6 +139,7 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
             compr.comprar();
             expendedor.entregarBebida();
             expendedor.entregarVuelto();
+            compr.getVuelto();
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
@@ -144,13 +147,18 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
         compr.comprar();
         expendedor.entregarBebida();
         expendedor.entregarVuelto();
+        compr.getVuelto();
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         compr.setNumBebida(3);
+        System.out.println(compr.getMoneda().toString());
         compr.comprar();
+        System.out.println(compr.getMoneda().getValor());
         expendedor.entregarBebida();
+        System.out.println(compr.getMoneda().getValor());
         expendedor.entregarVuelto();
+        compr.getVuelto();
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed

@@ -4,7 +4,7 @@
  */
 package tarea_3;
 
-public class DepositoMoneda_GUI extends javax.swing.JPanel {
+public class DepositoMoneda_GUI extends javax.swing.JLayeredPane {
     
     int numMonedas;
     
@@ -12,7 +12,6 @@ public class DepositoMoneda_GUI extends javax.swing.JPanel {
         
         numMonedas = 0;
         initComponents();
-        this.setLocation(WIDTH, WIDTH);
         this.setSize(jLabel1.getSize());
     }
     
@@ -42,20 +41,8 @@ public class DepositoMoneda_GUI extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/DepositoMoneda.jpg"))); // NOI18N
-        jLabel1.setMaximumSize(new java.awt.Dimension(45, 45));
-        jLabel1.setMinimumSize(new java.awt.Dimension(45, 45));
-        jLabel1.setPreferredSize(new java.awt.Dimension(45, 45));
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        add(jLabel1);
+        jLabel1.setBounds(0, 0, 45, 45);
     }// </editor-fold>//GEN-END:initComponents
 
 

@@ -29,13 +29,6 @@ public class Comprador extends JPanel{
             this.numBebida = numBebida;
         }
         
-        @Override
-        public void paint(Graphics g){
-            super.paint(g);
-        
-            g.drawRect(100,100, 50, 50);
-        }
-        
 	public void comprar() {
             
             try{
@@ -44,25 +37,25 @@ public class Comprador extends JPanel{
             }catch(Exception e){
                 System.out.print("");
             }
-            
-            while (true) {
-                    m = exp.getVuelto();
-                    if (m == null)
-                            break;
-                    
-                    vuelto += m.getValor();
-		}
 	}
 
 	public void beber(Bebida b) {
-		sabor = b.tomarBebida();
+            sabor = b.tomarBebida();
 	}
 
 	public int getVuelto(){
-		return vuelto;
+            
+            while (true) {
+                m = exp.getVuelto();
+                if (m == null)
+                        break;
+                    
+                vuelto += m.getValor();
+            }
+            return vuelto;
 	}
 
 	public String getSabor(){
-		return sabor;
+            return sabor;
 	}
 }
