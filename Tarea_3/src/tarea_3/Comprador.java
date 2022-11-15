@@ -27,10 +27,6 @@ public class Comprador{
             this.numBebida = numBebida;
         }
         
-        public Bebida getBebida(){
-            return exp.getBebida();
-        }
-        
 	public void comprar() {
             
             try{
@@ -44,18 +40,6 @@ public class Comprador{
 
 	public void beber(Bebida b) {
             sabor = b.tomarBebida();
-	}
-
-	public int getVuelto(){
-            
-            while (true) {
-                m = exp.getVuelto();
-                if (m == null)
-                        break;
-                    
-                vuelto += m.getValor();
-            }
-            return vuelto;
 	}
 
 	public String getSabor(){

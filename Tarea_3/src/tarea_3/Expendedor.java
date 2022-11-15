@@ -24,6 +24,10 @@ public class Expendedor {
     public void setPrecioBebida(int precio) {
         precioBebidas = precio;
     }
+    
+    public void setBebida(Bebida b){
+        bebida = b;
+    }
 
     public int getPrecioBebidas() {
         return precioBebidas;
@@ -38,6 +42,9 @@ public class Expendedor {
         return depositoMonedas.size();
     }
     
+    public Bebida getBebida() {
+        return this.bebida;
+    }
 
     public void comprarBebida(Moneda moneda, int numBebida) {
         try {
@@ -57,10 +64,10 @@ public class Expendedor {
         }
         try {
             if (moneda.getValor() > this.precioBebidas) {
+                this.bebida = depBebida[numBebida - 1].remove(0);
                 for (int i = moneda.getValor() - this.precioBebidas; i > 0; i -= 100) {
                     depositoMonedas.add(new Moneda100());
                 }
-                this.bebida = depBebida[numBebida - 1].remove(0);
 
             } else if (moneda.getValor() < this.precioBebidas) {
                 depositoMonedas.add(moneda);
@@ -76,10 +83,6 @@ public class Expendedor {
                 this.bebida = null;
             }
         }
-    }
-
-    public Bebida getBebida() {
-        return this.bebida;
     }
     
     public void rellenarDepBebidas(int dep){

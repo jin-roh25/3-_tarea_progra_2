@@ -22,6 +22,7 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         monedero = new tarea_3.Monedero_GUI();
         moneda_GUI10 = new tarea_3.Moneda_GUI();
         moneda_GUI1 = new tarea_3.Moneda_GUI();
@@ -57,7 +58,7 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
         });
         setLayer(jButton1, 1);
         add(jButton1);
-        jButton1.setBounds(140, 80, 15, 22);
+        jButton1.setBounds(170, 50, 15, 22);
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/CocaCola.png"))); // NOI18N
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -65,9 +66,14 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
                 jButton2MouseClicked(evt);
             }
         });
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         setLayer(jButton2, 1);
         add(jButton2);
-        jButton2.setBounds(160, 50, 15, 22);
+        jButton2.setBounds(140, 50, 15, 22);
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Pap.png"))); // NOI18N
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -79,6 +85,18 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
         setLayer(jButton3, 1);
         add(jButton3);
         jButton3.setBounds(170, 80, 15, 22);
+
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Bilz.png"))); // NOI18N
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton4.setPreferredSize(new java.awt.Dimension(25, 40));
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
+        setLayer(jButton4, 1);
+        add(jButton4);
+        jButton4.setBounds(140, 80, 15, 22);
         add(monedero);
         monedero.setBounds(350, 260, 80, 100);
         setLayer(moneda_GUI10, 2);
@@ -140,7 +158,7 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
         compr.setNumBebida(1);
         compr.comprar();
         expendedor.sincronizarDeposito();
-        expendedor.entregarBebida();
+        expendedor.entregarBebida(true);
         expendedor.entregarVuelto();
 
     }//GEN-LAST:event_jButton1MouseClicked
@@ -149,7 +167,7 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
         compr.setNumBebida(2);
         compr.comprar();
         expendedor.sincronizarDeposito();
-        expendedor.entregarBebida();
+        expendedor.entregarBebida(true);
         expendedor.entregarVuelto();
     }//GEN-LAST:event_jButton2MouseClicked
 
@@ -157,7 +175,7 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
         compr.setNumBebida(3);
         compr.comprar();
         expendedor.sincronizarDeposito();
-        expendedor.entregarBebida();
+        expendedor.entregarBebida(true);
         expendedor.entregarVuelto();
     }//GEN-LAST:event_jButton3MouseClicked
 
@@ -180,21 +198,23 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
         }
         if (evt.getSource().getClass() == DepositoBebida_GUI.class) {
             Bebida_GUI b = new Bebida_GUI();
-            b.setBebida(compr.getBebida());
+            b.setBebida(expendedor.getBebida());
             this.setLayer(b, 2);
             this.add(b);
             b.setBounds(expendedor.getX() + evt.getX() - b.getWidth() / 2,
                     expendedor.getY() + evt.getY() - b.getHeight() / 2,
                     b.getWidth(), b.getHeight());
 
-            expendedor.entregarBebida();
             b.dispatchEvent(evt);
 
             this.revalidate();
             this.repaint();
+            
+            expendedor.entregarBebida(false);
         }
         if (evt.getSource().getClass() == DepositoMoneda_GUI.class) {
-            Moneda_GUI m = monedero.sacarMoneda();
+            Moneda_GUI m = new Moneda_GUI();
+            m.setMoneda(expendedor.getVuelto());
             ultimaMoneda = m;
             if (m != null) {
                 this.setLayer(m, 2);
@@ -207,6 +227,8 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
                 
                 this.revalidate();
                 this.repaint();
+                
+                expendedor.entregarVuelto();
             }
 
         }
@@ -218,7 +240,20 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
             ultimaMoneda.dispatchEvent(evt);
             ultimaMoneda.setGrb(evt.getX(), evt.getY());
         }
+        
     }//GEN-LAST:event_formMouseDragged
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        compr.setNumBebida(4);
+        compr.comprar();
+        expendedor.sincronizarDeposito();
+        expendedor.entregarBebida(true);
+        expendedor.entregarVuelto();
+    }//GEN-LAST:event_jButton4MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -229,6 +264,7 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private tarea_3.Moneda_GUI moneda_GUI1;
     private tarea_3.Moneda_GUI moneda_GUI10;
     private tarea_3.Monedero_GUI monedero;

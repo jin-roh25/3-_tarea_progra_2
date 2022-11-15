@@ -31,6 +31,14 @@ public class Expendedor_GUI extends javax.swing.JLayeredPane {
     public Expendedor getExpendedor() {
         return exp;
     }
+        
+    public Bebida getBebida(){
+        return exp.getBebida();
+    }
+    
+    public Moneda getVuelto(){
+        return exp.getVuelto();
+    }
 
     public boolean isInCoinSlot(Point p) {
         return (p.x > this.getX() + 113
@@ -59,14 +67,16 @@ public class Expendedor_GUI extends javax.swing.JLayeredPane {
         }
     }
 
-    public void entregarBebida() {
-
+    public void entregarBebida(boolean v) {
+        
+        if(v==false){
+            exp.setBebida(null);
+        }
         this.createDepBebida();
         depBebida.setBebida(exp.getBebida());
     }
 
     public void entregarVuelto() {
-
         this.createDepMoneda();
         System.out.println(exp.getCantMonedas());
         depMonedas.setCantMonedas(exp.getCantMonedas());

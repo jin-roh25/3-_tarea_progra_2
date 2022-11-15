@@ -37,9 +37,17 @@ public class DepositoBebida_GUI extends javax.swing.JPanel {
 
         setMaximumSize(new java.awt.Dimension(159, 39));
         setPreferredSize(new java.awt.Dimension(159, 39));
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                formMouseDragged(evt);
+            }
+        });
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 formMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                formMouseReleased(evt);
             }
         });
 
@@ -66,6 +74,14 @@ public class DepositoBebida_GUI extends javax.swing.JPanel {
             this.getParent().dispatchEvent(evt);
         }
     }//GEN-LAST:event_formMousePressed
+
+    private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
+        this.getParent().dispatchEvent(evt);
+    }//GEN-LAST:event_formMouseDragged
+
+    private void formMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseReleased
+        this.getParent().dispatchEvent(evt);
+    }//GEN-LAST:event_formMouseReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
