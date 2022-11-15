@@ -12,7 +12,7 @@ public class Expendedor_GUI extends javax.swing.JLayeredPane {
     private DepositoBebida_GUI depBebida;
 
     public Expendedor_GUI() {
-        this.exp = new Expendedor(2, 200);
+        this.exp = new Expendedor(3, 400);
         initComponents();
         depositoBebidas = new ArrayList[4];
         for (int i = 0; i < depositoBebidas.length; i++) {
@@ -111,12 +111,13 @@ public class Expendedor_GUI extends javax.swing.JLayeredPane {
         jLabel1 = new javax.swing.JLabel();
         almacen = new javax.swing.JButton();
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Vending_Machine.png"))); // NOI18N
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+        addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel1MousePressed(evt);
+                formMousePressed(evt);
             }
         });
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Vending_Machine.png"))); // NOI18N
         add(jLabel1);
         jLabel1.setBounds(0, 0, 194, 292);
 
@@ -149,12 +150,19 @@ public class Expendedor_GUI extends javax.swing.JLayeredPane {
         this.sincronizarDeposito();
     }//GEN-LAST:event_almacenActionPerformed
 
-    private void jLabel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MousePressed
-        if (evt.getSource() == depBebida || evt.getSource() == depMonedas) {
-            JPanel deposito = (JPanel) evt.getSource();
-            evt.translatePoint(deposito.getX(), deposito.getY());
+    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+        if (evt.getSource() == depBebida) {
+            DepositoBebida_GUI dep = (DepositoBebida_GUI) evt.getSource();
+            evt.translatePoint(dep.getX(), dep.getY());
+            this.getParent().dispatchEvent(evt);
         }
-    }//GEN-LAST:event_jLabel1MousePressed
+
+        if (evt.getSource() == depMonedas) {
+            DepositoMoneda_GUI dep = (DepositoMoneda_GUI) evt.getSource();
+            evt.translatePoint(dep.getX(), dep.getY());
+            this.getParent().dispatchEvent(evt);
+        }
+    }//GEN-LAST:event_formMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
