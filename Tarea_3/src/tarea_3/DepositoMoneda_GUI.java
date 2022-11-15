@@ -40,10 +40,20 @@ public class DepositoMoneda_GUI extends javax.swing.JLayeredPane {
 
         jLabel1 = new javax.swing.JLabel();
 
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                formMousePressed(evt);
+            }
+        });
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/DepositoMoneda.jpg"))); // NOI18N
         add(jLabel1);
         jLabel1.setBounds(0, 0, 45, 45);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+        this.getParent().dispatchEvent(evt);
+    }//GEN-LAST:event_formMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
