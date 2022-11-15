@@ -11,7 +11,8 @@ public class Monedero_GUI extends javax.swing.JPanel {
         saldo = 3600;
         monedaPorSacar = 0;
         initComponents();
-        this.setSize(mond.getWidth(), mond.getHeight());
+        this.setPreferredSize(mond.getSize());
+        this.setSize(mond.getSize());
     }
 
     public boolean isInMonedero(Point p) {
@@ -76,6 +77,7 @@ public class Monedero_GUI extends javax.swing.JPanel {
                 formMouseReleased(evt);
             }
         });
+        setLayout(null);
 
         mond.setFont(new java.awt.Font("MV Boli", 0, 12)); // NOI18N
         mond.setForeground(new java.awt.Color(0, 204, 0));
@@ -86,17 +88,8 @@ public class Monedero_GUI extends javax.swing.JPanel {
         mond.setMinimumSize(new java.awt.Dimension(80, 100));
         mond.setPreferredSize(new java.awt.Dimension(80, 100));
         mond.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mond, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mond, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        add(mond);
+        mond.setBounds(0, 0, 80, 100);
     }// </editor-fold>//GEN-END:initComponents
 
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed

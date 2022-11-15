@@ -8,6 +8,7 @@ public class Bebida_GUI extends javax.swing.JPanel {
     public Bebida_GUI() {
         b = new CanadaDry(-1);
         initComponents();
+        this.setPreferredSize(jLabel1.getSize());
         this.setSize(jLabel1.getSize());
     }
 

@@ -8,7 +8,7 @@ public class Expendedor {
     private final ArrayList<Moneda> depositoMonedas;;
     private Bebida bebida;
     private int precioBebidas;
-    private int cantidadPorDept;
+    private final int cantidadPorDept;
 
     public Expendedor(int cantidadPorDep, int precio) {
         bebida = null;

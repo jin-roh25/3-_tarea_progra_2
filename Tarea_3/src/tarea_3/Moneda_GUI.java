@@ -10,6 +10,7 @@ public class Moneda_GUI extends javax.swing.JPanel {
     public Moneda_GUI() {
         m = new Moneda100();
         initComponents();
+        this.setPreferredSize(jLabel1.getSize());
         this.setSize(jLabel1.getSize());
     }
 
