@@ -52,3 +52,15 @@ class CocaCola extends Bebida {
         return "CocaCola";
     }
 }
+
+class Bilz extends Bebida{
+    
+    public Bilz(int serie){
+        super(serie);
+    }
+    @Override
+    public String tomarBebida(){
+        
+        return "Bilz";        
+    }
+}

@@ -88,15 +88,17 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
         moneda_GUI1.setMoneda(new Moneda1500());
         setLayer(moneda_GUI1, 2);
         add(moneda_GUI1);
-        moneda_GUI1.setBounds(270, 250, 30, 30);
+        moneda_GUI1.setBounds(290, 90, 30, 30);
+
+        bebida_GUI2.setBebida(new Bilz(5));
         setLayer(bebida_GUI2, 2);
         add(bebida_GUI2);
-        bebida_GUI2.setBounds(130, 390, 0, 0);
+        bebida_GUI2.setBounds(130, 390, 20, 34);
 
         bebida_GUI3.setBebida(new CocaCola(5));
         setLayer(bebida_GUI3, 2);
         add(bebida_GUI3);
-        bebida_GUI3.setBounds(400, 160, 0, 0);
+        bebida_GUI3.setBounds(400, 160, 20, 34);
         setLayer(bebida_GUI1, 2);
         add(bebida_GUI1);
         bebida_GUI1.setBounds(60, 330, 20, 34);
@@ -135,16 +137,19 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
     }//GEN-LAST:event_formMouseReleased
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-            compr.setNumBebida(1);
-            compr.comprar();
-            expendedor.entregarBebida();
-            expendedor.entregarVuelto();
-            compr.getVuelto();
+        compr.setNumBebida(1);
+        compr.comprar();
+        expendedor.sincronizarDeposito();
+        expendedor.entregarBebida();
+        expendedor.entregarVuelto();
+        compr.getVuelto();
+
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         compr.setNumBebida(2);
         compr.comprar();
+        expendedor.sincronizarDeposito();
         expendedor.entregarBebida();
         expendedor.entregarVuelto();
         compr.getVuelto();
@@ -153,6 +158,7 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         compr.setNumBebida(3);
         compr.comprar();
+        expendedor.sincronizarDeposito();
         expendedor.entregarBebida();
         expendedor.entregarVuelto();
         compr.getVuelto();
@@ -165,9 +171,9 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
             if (m != null) {
                 this.setLayer(m, 2);
                 this.add(m);
-                m.setBounds(monedero.getX() + evt.getX() - m.getWidth() / 2,
-                        monedero.getY() + evt.getY() - m.getHeight() / 2,
-                        m.getWidth(), m.getHeight());
+                m.setLocation(monedero.getX() + evt.getX() - m.getWidth() / 2,
+                        monedero.getY() + evt.getY() - m.getHeight() / 2);
+                //m.getWidth(), m.getHeight());
 
                 m.dispatchEvent(evt);
 
@@ -175,22 +181,22 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
                 this.repaint();
             }
         }
-        if(evt.getSource().getClass() == DepositoBebida_GUI.class){
-            Bebida_GUI b= new Bebida_GUI();
+        if (evt.getSource().getClass() == DepositoBebida_GUI.class) {
+            Bebida_GUI b = new Bebida_GUI();
             b.setBebida(compr.getBebida());
             this.setLayer(b, 2);
             this.add(b);
             b.setBounds(250,
-                        0,
-                        b.getWidth(), b.getHeight());
-            
+                    0,
+                    b.getWidth(), b.getHeight());
+
             expendedor.entregarBebida();
             b.dispatchEvent(evt);
 
             this.revalidate();
             this.repaint();
         }
-        if(evt.getSource().getClass() == DepositoBebida_GUI.class){
+        if (evt.getSource().getClass() == DepositoBebida_GUI.class) {
             Moneda_GUI m = monedero.sacarMoneda();
             ultimaMoneda = m;
             if (m != null) {
@@ -205,7 +211,7 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
                 this.revalidate();
                 this.repaint();
             }
-            
+
         }
     }//GEN-LAST:event_formMousePressed
 

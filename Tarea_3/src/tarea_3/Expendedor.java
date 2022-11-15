@@ -13,9 +13,9 @@ public class Expendedor {
     public Expendedor(int cantidadPorDep, int precio) {
         bebida = null;
         cantidadPorDept = cantidadPorDep;
-        depBebida = new ArrayList[3];
         depositoMonedas = new ArrayList();
-        for (int i = 0; i < 3; i++) {
+        depBebida = new ArrayList[4];
+        for (int i = 0; i < depBebida.length; i++) {
             depBebida[i] = new ArrayList();
         }
         precioBebidas = precio;
@@ -28,12 +28,16 @@ public class Expendedor {
     public int getPrecioBebidas() {
         return precioBebidas;
     }
-    public int getCantDeptBebidas(int deposito){
-        return depBebida[deposito-1].size();
+    public ArrayList<Bebida> getDepBebida(int deposito){
+        return depBebida[deposito];
+    }
+    public int getCantDeptBebidas(){
+        return cantidadPorDept;
     }
     public int getCantMonedas(){
         return depositoMonedas.size();
     }
+    
 
     public void comprarBebida(Moneda moneda, int numBebida) {
         try {
@@ -43,7 +47,7 @@ public class Expendedor {
             this.bebida = null;
         }
         try {
-            if (numBebida < 1 || numBebida > 3) {
+            if (numBebida < 1 || numBebida > 4) {
                 int x = 1 / 0;
             }
         } catch (Exception e) {
@@ -79,19 +83,24 @@ public class Expendedor {
     
     public void rellenarDepBebidas(int dep){
         
-        if(dep == 1){
+        if(dep == 0){
             for (int j = 0; j < cantidadPorDept; j++) {
                 depBebida[0].add(new CanadaDry(j + 1));
             }
         }
-        if(dep == 2){
+        if(dep == 1){
             for (int j = 0; j < cantidadPorDept; j++) {
                 depBebida[1].add(new CocaCola(j + 1));
             }
         }
-        if(dep == 3){
+        if(dep == 2){
             for (int j = 0; j < cantidadPorDept; j++) {
                 depBebida[2].add(new Pap(j + 1));
+            }
+        }
+        if(dep == 3){
+            for (int j = 0; j < cantidadPorDept; j++) {
+                depBebida[3].add(new Bilz(j + 1));
             }
         }
     }
