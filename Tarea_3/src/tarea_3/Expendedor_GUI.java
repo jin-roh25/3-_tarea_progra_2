@@ -12,7 +12,7 @@ public class Expendedor_GUI extends javax.swing.JLayeredPane {
     private DepositoBebida_GUI depBebida;
 
     public Expendedor_GUI() {
-        this.exp = new Expendedor(4, 200);
+        this.exp = new Expendedor(2, 200);
         initComponents();
         depositoBebidas = new ArrayList[4];
         for (int i = 0; i < depositoBebidas.length; i++) {
@@ -90,7 +90,12 @@ public class Expendedor_GUI extends javax.swing.JLayeredPane {
         for (int i = 0; i < 4; i++) {
             int n = Integer.min(exp.getDepBebida(i).size(), 3);
 
-            for (int j = depositoBebidas[i].size(); j < n; j++) {
+            for (Bebida_GUI j : depositoBebidas[i]) {
+                this.remove(j);
+            }
+            depositoBebidas[i].removeAll(depositoBebidas[i]);
+
+            for (int j = 0; j < n; j++) {
                 Bebida_GUI b = new Bebida_GUI();
                 b.setBebida(exp.getDepBebida(i).get(j));
                 depositoBebidas[i].add(b);
