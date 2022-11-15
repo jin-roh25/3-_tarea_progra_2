@@ -70,10 +70,11 @@ public class Expendedor {
                 this.bebida = depBebida[numBebida - 1].remove(0);
             }
         } catch (Exception e) {
-            depositoMonedas.removeAll(depositoMonedas);
-            depositoMonedas.add(moneda);
-            System.out.println("Error,NoHayBebidaException");
-            this.bebida = null;
+            if(moneda!=null){
+                depositoMonedas.add(moneda);
+                System.out.println("Error,NoHayBebidaException");
+                this.bebida = null;
+            }
         }
     }
 

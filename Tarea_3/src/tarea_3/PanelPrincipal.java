@@ -142,7 +142,6 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
         expendedor.sincronizarDeposito();
         expendedor.entregarBebida();
         expendedor.entregarVuelto();
-        compr.getVuelto();
 
     }//GEN-LAST:event_jButton1MouseClicked
 
@@ -152,7 +151,6 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
         expendedor.sincronizarDeposito();
         expendedor.entregarBebida();
         expendedor.entregarVuelto();
-        compr.getVuelto();
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
@@ -161,7 +159,6 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
         expendedor.sincronizarDeposito();
         expendedor.entregarBebida();
         expendedor.entregarVuelto();
-        compr.getVuelto();
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
@@ -186,8 +183,8 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
             b.setBebida(compr.getBebida());
             this.setLayer(b, 2);
             this.add(b);
-            b.setBounds(250,
-                    0,
+            b.setBounds(expendedor.getX() + evt.getX() - b.getWidth() / 2,
+                    expendedor.getY() + evt.getY() - b.getHeight() / 2,
                     b.getWidth(), b.getHeight());
 
             expendedor.entregarBebida();
@@ -196,23 +193,24 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
             this.revalidate();
             this.repaint();
         }
-        if (evt.getSource().getClass() == DepositoBebida_GUI.class) {
+        if (evt.getSource().getClass() == DepositoMoneda_GUI.class) {
             Moneda_GUI m = monedero.sacarMoneda();
             ultimaMoneda = m;
             if (m != null) {
                 this.setLayer(m, 2);
                 this.add(m);
-                m.setBounds(monedero.getX() + evt.getX() - m.getWidth() / 2,
-                        monedero.getY() + evt.getY() - m.getHeight() / 2,
+                m.setBounds(expendedor.getX() + evt.getX() - m.getWidth() / 2,
+                        expendedor.getY() + evt.getY() - m.getHeight() / 2,
                         m.getWidth(), m.getHeight());
 
                 m.dispatchEvent(evt);
-
+                
                 this.revalidate();
                 this.repaint();
             }
 
         }
+        System.out.println("Comp en Layer 2: "+this.getComponentCountInLayer(2));
     }//GEN-LAST:event_formMousePressed
 
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
