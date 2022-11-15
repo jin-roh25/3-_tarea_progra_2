@@ -27,6 +27,10 @@ public class Comprador{
             this.numBebida = numBebida;
         }
         
+        public Bebida getBebida(){
+            return exp.getBebida();
+        }
+        
 	public void comprar() {
             
             try{

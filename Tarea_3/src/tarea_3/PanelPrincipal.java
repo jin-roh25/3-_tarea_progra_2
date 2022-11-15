@@ -152,11 +152,8 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         compr.setNumBebida(3);
-        System.out.println(compr.getMoneda().toString());
         compr.comprar();
-        System.out.println(compr.getMoneda().getValor());
         expendedor.entregarBebida();
-        System.out.println(compr.getMoneda().getValor());
         expendedor.entregarVuelto();
         compr.getVuelto();
     }//GEN-LAST:event_jButton3MouseClicked
@@ -177,11 +174,39 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
                 this.revalidate();
                 this.repaint();
             }
-        }else{
-            System.out.println(evt.getPoint());
         }
-        
-        
+        if(evt.getSource().getClass() == DepositoBebida_GUI.class){
+            Bebida_GUI b= new Bebida_GUI();
+            b.setBebida(compr.getBebida());
+            this.setLayer(b, 2);
+            this.add(b);
+            b.setBounds(250,
+                        0,
+                        b.getWidth(), b.getHeight());
+            
+            expendedor.entregarBebida();
+            b.dispatchEvent(evt);
+
+            this.revalidate();
+            this.repaint();
+        }
+        if(evt.getSource().getClass() == DepositoBebida_GUI.class){
+            Moneda_GUI m = monedero.sacarMoneda();
+            ultimaMoneda = m;
+            if (m != null) {
+                this.setLayer(m, 2);
+                this.add(m);
+                m.setBounds(monedero.getX() + evt.getX() - m.getWidth() / 2,
+                        monedero.getY() + evt.getY() - m.getHeight() / 2,
+                        m.getWidth(), m.getHeight());
+
+                m.dispatchEvent(evt);
+
+                this.revalidate();
+                this.repaint();
+            }
+            
+        }
     }//GEN-LAST:event_formMousePressed
 
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
