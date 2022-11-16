@@ -16,6 +16,11 @@ public class Bebida_GUI extends javax.swing.JPanel {
         this.b = b;
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/" + b.tomarBebida() + ".png")));
     }
+    
+    public void setGrb(int x,int y){
+        grbX = x;
+        grbY = y;
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

@@ -6,10 +6,11 @@ import java.awt.*;
 public class PanelPrincipal extends javax.swing.JLayeredPane {
 
     private Comprador compr;
-    private Moneda_GUI ultimaMoneda;
+    private Moneda_GUI monedaSacada;
+    private Bebida_GUI bebidaSacada;
 
     public PanelPrincipal() {
-        ultimaMoneda = null;
+        monedaSacada = null;
         initComponents();
         compr = new Comprador(null, expendedor.getExpendedor(), 0);
     }
@@ -125,18 +126,16 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseReleased
-        if (evt.getSource().getClass() == Moneda_GUI.class || ultimaMoneda != null) {
-            Moneda_GUI m = null;
+        if (evt.getSource().getClass() == Moneda_GUI.class || monedaSacada != null) {
 
-            if (evt.getSource().getClass() == Moneda_GUI.class) {
+            Moneda_GUI m = monedaSacada;
+            monedaSacada = null;
+
+            if (m == null) {
                 m = (Moneda_GUI) evt.getSource();
-            }
-            if (ultimaMoneda != null) {
-                m = ultimaMoneda;
             }
 
             if (expendedor.isInCoinSlot(m.getCenter()) && compr.getMoneda() == null) {
-
                 compr.setMoneda(m.getMoneda());
                 this.remove(m);
                 this.revalidate();
@@ -149,8 +148,10 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
                 this.revalidate();
                 this.repaint();
             }
+        }
 
-            ultimaMoneda = null;
+        if (bebidaSacada != null) {
+            bebidaSacada = null;
         }
     }//GEN-LAST:event_formMouseReleased
 
@@ -181,70 +182,71 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
 
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
         if (evt.getSource().getClass() == Monedero_GUI.class) {
-            Moneda_GUI m = monedero.sacarMoneda();
-            ultimaMoneda = m;
-            if (m != null) {
-                this.setLayer(m, 2);
-                this.add(m);
-                m.setLocation(monedero.getX() + evt.getX() - m.getWidth() / 2,
-                        monedero.getY() + evt.getY() - m.getHeight() / 2);
-                //m.getWidth(), m.getHeight());
+            monedaSacada = monedero.sacarMoneda();
+            if (monedaSacada != null) {
+                this.setLayer(monedaSacada, 2);
+                this.add(monedaSacada);
+                monedaSacada.setLocation(monedero.getX() + evt.getX() - monedaSacada.getWidth() / 2,
+                        monedero.getY() + evt.getY() - monedaSacada.getHeight() / 2);
 
-                m.dispatchEvent(evt);
+                monedaSacada.dispatchEvent(evt);
 
                 this.revalidate();
                 this.repaint();
             }
         }
         if (evt.getSource().getClass() == DepositoBebida_GUI.class) {
-            Bebida_GUI b = new Bebida_GUI();
-            b.setBebida(expendedor.getBebida());
-            this.setLayer(b, 2);
-            this.add(b);
-            b.setBounds(expendedor.getX() + evt.getX() - b.getWidth() / 2,
-                    expendedor.getY() + evt.getY() - b.getHeight() / 2,
-                    b.getWidth(), b.getHeight());
+            bebidaSacada = new Bebida_GUI();
+            bebidaSacada.setBebida(expendedor.getBebida());
+            this.setLayer(bebidaSacada, 2);
+            this.add(bebidaSacada);
+            bebidaSacada.setBounds(expendedor.getX() + evt.getX() - bebidaSacada.getWidth() / 2,
+                    expendedor.getY() + evt.getY() - bebidaSacada.getHeight() / 2,
+                    bebidaSacada.getWidth(), bebidaSacada.getHeight());
 
-            b.dispatchEvent(evt);
+            bebidaSacada.dispatchEvent(evt);
 
             this.revalidate();
             this.repaint();
-            
+
             expendedor.entregarBebida(false);
         }
         if (evt.getSource().getClass() == DepositoMoneda_GUI.class) {
-            Moneda_GUI m = new Moneda_GUI();
-            m.setMoneda(expendedor.getVuelto());
-            ultimaMoneda = m;
-            if (m != null) {
-                this.setLayer(m, 2);
-                this.add(m);
-                m.setBounds(expendedor.getX() + evt.getX() - m.getWidth() / 2,
-                        expendedor.getY() + evt.getY() - m.getHeight() / 2,
-                        m.getWidth(), m.getHeight());
+            monedaSacada = new Moneda_GUI();
+            monedaSacada.setMoneda(expendedor.getVuelto());
+            if (monedaSacada != null) {
+                this.setLayer(monedaSacada, 2);
+                this.add(monedaSacada);
+                monedaSacada.setBounds(expendedor.getX() + evt.getX() - monedaSacada.getWidth() / 2,
+                        expendedor.getY() + evt.getY() - monedaSacada.getHeight() / 2,
+                        monedaSacada.getWidth(), monedaSacada.getHeight());
 
-                m.dispatchEvent(evt);
-                
+                monedaSacada.dispatchEvent(evt);
+
                 this.revalidate();
                 this.repaint();
-                
+
                 expendedor.entregarVuelto();
             }
 
         }
-        System.out.println("Comp en Layer 2: "+this.getComponentCountInLayer(2));
+        System.out.println("Comp en Layer 2: " + this.getComponentCountInLayer(2));
     }//GEN-LAST:event_formMousePressed
 
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
-        if (ultimaMoneda != null) {
-            ultimaMoneda.dispatchEvent(evt);
-            ultimaMoneda.setGrb(evt.getX(), evt.getY());
+        if (monedaSacada != null) {
+            monedaSacada.dispatchEvent(evt);
+            monedaSacada.setGrb(evt.getX(), evt.getY());
         }
-        
+        if (bebidaSacada != null) {
+            bebidaSacada.dispatchEvent(evt);
+            bebidaSacada.setGrb(evt.getX(), evt.getY());
+        }
+
     }//GEN-LAST:event_formMouseDragged
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
