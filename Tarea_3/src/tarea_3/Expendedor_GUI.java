@@ -120,6 +120,8 @@ public class Expendedor_GUI extends javax.swing.JLayeredPane {
 
         jLabel1 = new javax.swing.JLabel();
         almacen = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
@@ -155,6 +157,17 @@ public class Expendedor_GUI extends javax.swing.JLayeredPane {
         setLayer(almacen, javax.swing.JLayeredPane.PALETTE_LAYER);
         add(almacen);
         almacen.setBounds(6, 9, 124, 145);
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel2.setText("$" + String.valueOf(exp.getPrecioBebidas()));
+        setLayer(jLabel2, 1);
+        add(jLabel2);
+        jLabel2.setBounds(20, 190, 109, 25);
+
+        jLabel3.setText("PRECIO:");
+        setLayer(jLabel3, 1);
+        add(jLabel3);
+        jLabel3.setBounds(20, 170, 60, 16);
     }// </editor-fold>//GEN-END:initComponents
 
     private void almacenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_almacenActionPerformed
@@ -220,5 +233,7 @@ public class Expendedor_GUI extends javax.swing.JLayeredPane {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton almacen;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }
