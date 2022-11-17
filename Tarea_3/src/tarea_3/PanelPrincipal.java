@@ -44,58 +44,58 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
 
         expendedor.setBackground(java.awt.Color.white);
         add(expendedor);
-        expendedor.setBounds(-1, -1, 200, 300);
+        expendedor.setBounds(20, 170, 200, 300);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/CanadaDry.png"))); // NOI18N
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
         setLayer(jButton1, 1);
         add(jButton1);
-        jButton1.setBounds(170, 50, 15, 22);
+        jButton1.setBounds(187, 223, 15, 22);
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/CocaCola.png"))); // NOI18N
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton2MouseClicked(evt);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
             }
         });
         setLayer(jButton2, 1);
         add(jButton2);
-        jButton2.setBounds(140, 50, 15, 22);
+        jButton2.setBounds(162, 223, 15, 22);
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Pap.png"))); // NOI18N
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton3MouseClicked(evt);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
             }
         });
         setLayer(jButton3, 1);
         add(jButton3);
-        jButton3.setBounds(170, 80, 15, 22);
+        jButton3.setBounds(187, 250, 15, 22);
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Bilz.png"))); // NOI18N
         jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton4.setPreferredSize(new java.awt.Dimension(25, 40));
-        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton4MouseClicked(evt);
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
             }
         });
         setLayer(jButton4, 1);
         add(jButton4);
-        jButton4.setBounds(140, 80, 15, 22);
+        jButton4.setBounds(162, 250, 15, 22);
         add(monedero);
-        monedero.setBounds(350, 260, 80, 100);
+        monedero.setBounds(410, 390, 80, 100);
 
         moneda_GUI1.setMoneda(new Moneda1000());
         setLayer(moneda_GUI1, 2);
         add(moneda_GUI1);
-        moneda_GUI1.setBounds(290, 190, 30, 30);
+        moneda_GUI1.setBounds(360, 460, 30, 30);
 
         getAccessibleContext().setAccessibleName("");
     }// </editor-fold>//GEN-END:initComponents
@@ -129,31 +129,6 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
             bebidaSacada = null;
         }
     }//GEN-LAST:event_formMouseReleased
-
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        compr.setNumBebida(1);
-        compr.comprar();
-        expendedor.sincronizarDeposito();
-        expendedor.entregarBebida();
-        expendedor.entregarVuelto();
-
-    }//GEN-LAST:event_jButton1MouseClicked
-
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        compr.setNumBebida(2);
-        compr.comprar();
-        expendedor.sincronizarDeposito();
-        expendedor.entregarBebida();
-        expendedor.entregarVuelto();
-    }//GEN-LAST:event_jButton2MouseClicked
-
-    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-        compr.setNumBebida(3);
-        compr.comprar();
-        expendedor.sincronizarDeposito();
-        expendedor.entregarBebida();
-        expendedor.entregarVuelto();
-    }//GEN-LAST:event_jButton3MouseClicked
 
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
         if (evt.getSource().getClass() == Monedero_GUI.class) {
@@ -219,13 +194,37 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
 
     }//GEN-LAST:event_formMouseDragged
 
-    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         compr.setNumBebida(4);
         compr.comprar();
         expendedor.sincronizarDeposito();
         expendedor.entregarBebida();
         expendedor.entregarVuelto();
-    }//GEN-LAST:event_jButton4MouseClicked
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        compr.setNumBebida(3);
+        compr.comprar();
+        expendedor.sincronizarDeposito();
+        expendedor.entregarBebida();
+        expendedor.entregarVuelto();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        compr.setNumBebida(2);
+        compr.comprar();
+        expendedor.sincronizarDeposito();
+        expendedor.entregarBebida();
+        expendedor.entregarVuelto();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        compr.setNumBebida(1);
+        compr.comprar();
+        expendedor.sincronizarDeposito();
+        expendedor.entregarBebida();
+        expendedor.entregarVuelto();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
