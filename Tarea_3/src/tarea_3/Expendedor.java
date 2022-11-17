@@ -1,91 +1,124 @@
 package tarea_3;
-import java.awt.*;
+
 import java.util.ArrayList;
-import javax.swing.*;
 
-public class Expendedor extends JPanel{
+public class Expendedor {
 
-    private ArrayList<Bebida>[] depBebida;
+    private final ArrayList<Bebida>[] depBebida;
+    private final ArrayList<Bebida> bebidasCompradas;
+    private final ArrayList<Moneda> depositoMonedas;
     private int precioBebidas;
-    private int depositoMonedas;
-    private Bebida bebida;
+    private final int cantidadPorDept;
 
     public Expendedor(int cantidadPorDep, int precio) {
-        bebida = null;
-        depBebida = new ArrayList[3];
-        depositoMonedas = 0;
-        for (int i = 0; i < 3; i++) {
-            depBebida[i] = new ArrayList<Bebida>();
-            for(int j=0;j<cantidadPorDep;j++){
-                if(i==0){
-                    depBebida[i].add(new CanadaDry(j+1));
-                }else if(i==1){
-                    depBebida[i].add(new Pap(j+1));
-                }else if(i==2){
-                    depBebida[i].add(new CocaCola(j+1));
-                }
-            }
+        cantidadPorDept = cantidadPorDep;
+        bebidasCompradas = new ArrayList();
+        depositoMonedas = new ArrayList();
+        depBebida = new ArrayList[4];
+        for (int i = 0; i < depBebida.length; i++) {
+            depBebida[i] = new ArrayList();
         }
         precioBebidas = precio;
     }
-    
-    @Override
-        public void paint(Graphics g){
-            super.paint(g);
-        
-            g.drawRect(200,200, 50, 50);
+
+    public void setPrecioBebida(int precio) {
+        precioBebidas = precio;
     }
-    
     public int getPrecioBebidas() {
         return precioBebidas;
     }
-
-    public void comprarBebida(Moneda moneda,int numBebida) {
-        try{
-            moneda.toString();
-        }catch(Exception e){
-            System.out.println("Error,PagoIncorrectoException");
-            this.bebida = null;
-        }
-        try{
-            if(numBebida<1||numBebida>3){
-                int x = 1/0;
-            }
-        }catch(Exception e){
-            depositoMonedas += moneda.getValor();
-            System.out.println("Error,DepositoInexistenteException");
-            this.bebida = null;
-        }
-        try{
-            if(moneda.getValor()>this.precioBebidas){
-                        depositoMonedas = moneda.getValor() - this.precioBebidas;
-                        this.bebida = depBebida[numBebida-1].remove(0);
-
-            }else if(moneda.getValor()<this.precioBebidas){
-                    depositoMonedas += moneda.getValor();
-                    System.out.println("Error,PagoInsuficienteException");
-                    this.bebida = null;
-            }else{
-                    this.bebida = depBebida[numBebida-1].remove(0);
-            }
-        }catch(Exception e){
-            depositoMonedas = 0;
-            depositoMonedas += moneda.getValor();
-            System.out.println("Error,NoHayBebidaException");
-            this.bebida = null;
-        }
+    public ArrayList<Bebida> getDepBebida(int deposito){
+        return depBebida[deposito];
+    }
+    public int getCantDeptBebidas(){
+        return cantidadPorDept;
+    }
+    public int getCantMonedas(){
+        return depositoMonedas.size();
     }
     
     public Bebida getBebida(){
-        return this.bebida;
+        if(bebidasCompradas.isEmpty()){
+            return null;
+        }else{
+            return bebidasCompradas.get(0);
+        }
+    }
+    
+    public Bebida removerBebida(){
+        
+        if(bebidasCompradas.isEmpty()){
+            return null;
+        }else{
+            return bebidasCompradas.remove(0);
+        }
+    }
+
+    public void comprarBebida(Moneda moneda, int numBebida) {
+        try {
+            moneda.toString();
+        } catch (Exception e) {
+            System.out.println("Error,PagoIncorrectoException");
+        }
+        try {
+            if (numBebida < 1 || numBebida > 4) {
+                int x = 1 / 0;
+            }
+        } catch (Exception e) {
+            depositoMonedas.add(moneda);
+            System.out.println("Error,DepositoInexistenteException");
+        }
+        try {
+            if (moneda.getValor() > this.precioBebidas) {
+                bebidasCompradas.add(depBebida[numBebida - 1].remove(0));
+                for (int i = moneda.getValor() - this.precioBebidas; i > 0; i -= 100) {
+                    depositoMonedas.add(new Moneda100());
+                }
+
+            } else if (moneda.getValor() < this.precioBebidas) {
+                depositoMonedas.add(moneda);
+                System.out.println("Error,PagoInsuficienteException");
+            } else {
+                bebidasCompradas.add(depBebida[numBebida - 1].remove(0));
+            }
+        } catch (Exception e) {
+            if(moneda!=null){
+                depositoMonedas.add(moneda);
+                System.out.println("Error,NoHayBebidaException");
+            }
+        }
+    }
+    
+    public void rellenarDepBebidas(int dep){
+        
+        if(dep == 0){
+            for (int j = 0; j < cantidadPorDept; j++) {
+                depBebida[0].add(new CanadaDry(j + 1));
+            }
+        }
+        if(dep == 1){
+            for (int j = 0; j < cantidadPorDept; j++) {
+                depBebida[1].add(new CocaCola(j + 1));
+            }
+        }
+        if(dep == 2){
+            for (int j = 0; j < cantidadPorDept; j++) {
+                depBebida[2].add(new Pap(j + 1));
+            }
+        }
+        if(dep == 3){
+            for (int j = 0; j < cantidadPorDept; j++) {
+                depBebida[3].add(new Bilz(j + 1));
+            }
+        }
     }
 
     public Moneda getVuelto() {
-        if(depositoMonedas >= 100){
-            depositoMonedas -= 100;
-            return new Moneda100();
-        }else{
+        
+        if(depositoMonedas.isEmpty()){
             return null;
+        }else{
+            return depositoMonedas.remove(0);
         }
     }
 }

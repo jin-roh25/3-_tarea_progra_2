@@ -15,3 +15,52 @@ public abstract class Bebida {
     public abstract String tomarBebida();
     
 }
+
+class Pap extends Bebida{
+    
+    public Pap(int serie){
+        super(serie);
+    }
+    @Override
+    public String tomarBebida(){
+        
+        return "Pap";        
+    }
+}
+
+class CanadaDry extends Bebida {
+    
+    public CanadaDry(int serie){
+        super(serie);
+    }
+    @Override
+    public String tomarBebida(){
+        
+        return "CanadaDry";        
+    }
+}
+
+class CocaCola extends Bebida {
+
+    public CocaCola(int serie) {
+        super(serie);
+    }
+
+    @Override
+    public String tomarBebida() {
+
+        return "CocaCola";
+    }
+}
+
+class Bilz extends Bebida{
+    
+    public Bilz(int serie){
+        super(serie);
+    }
+    @Override
+    public String tomarBebida(){
+        
+        return "Bilz";        
+    }
+}

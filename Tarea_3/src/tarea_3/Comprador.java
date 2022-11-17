@@ -1,19 +1,16 @@
 package tarea_3;
-import java.awt.*;
-import javax.swing.*;
 
-public class Comprador extends JPanel{
+public class Comprador{
 
 	private Moneda m;
-	private Expendedor exp;
-	private int numBebida, vuelto;
+	private final Expendedor exp;
+	private int numBebida;
 	private String sabor;
 
 	public Comprador(Moneda m, Expendedor exp, int numBebida) {
 		this.m = m;
 		this.exp = exp;
 		this.numBebida = numBebida;
-		vuelto = 0;
 		sabor = "";
 	}
 
@@ -21,44 +18,29 @@ public class Comprador extends JPanel{
             this.m = moneda;
         }
         
-        public void setNumBebida(int numBebida){
-            this.numBebida = numBebida;
+        public Moneda getMoneda(){
+            return m;
         }
         
-        @Override
-        public void paint(Graphics g){
-            super.paint(g);
-        
-            g.drawRect(100,100, 50, 50);
+        public void setNumBebida(int numBebida){
+            this.numBebida = numBebida;
         }
         
 	public void comprar() {
             
             try{
                 exp.comprarBebida(m, numBebida);
-                this.beber(exp.getBebida());
+                m = null;
             }catch(Exception e){
                 System.out.print("");
             }
-            
-            while (true) {
-                    m = exp.getVuelto();
-                    if (m == null)
-                            break;
-                    
-                    vuelto += m.getValor();
-		}
 	}
 
 	public void beber(Bebida b) {
-		sabor = b.tomarBebida();
-	}
-
-	public int getVuelto(){
-		return vuelto;
+            sabor = b.tomarBebida();
 	}
 
 	public String getSabor(){
-		return sabor;
+            return sabor;
 	}
 }
