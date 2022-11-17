@@ -87,8 +87,6 @@ public class Expendedor {
                 System.out.println("Error,NoHayBebidaException");
             }
         }
-        
-        System.out.println("bebidas: " + bebidasCompradas.size());
     }
     
     public void rellenarDepBebidas(int dep){

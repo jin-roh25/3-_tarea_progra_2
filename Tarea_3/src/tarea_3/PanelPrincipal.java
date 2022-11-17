@@ -25,11 +25,7 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         monedero = new tarea_3.Monedero_GUI();
-        moneda_GUI10 = new tarea_3.Moneda_GUI();
         moneda_GUI1 = new tarea_3.Moneda_GUI();
-        bebida_GUI2 = new tarea_3.Bebida_GUI();
-        bebida_GUI3 = new tarea_3.Bebida_GUI();
-        bebida_GUI1 = new tarea_3.Bebida_GUI();
 
         setPreferredSize(new java.awt.Dimension(500, 500));
         addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -67,11 +63,6 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
                 jButton2MouseClicked(evt);
             }
         });
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
         setLayer(jButton2, 1);
         add(jButton2);
         jButton2.setBounds(140, 50, 15, 22);
@@ -100,27 +91,11 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
         jButton4.setBounds(140, 80, 15, 22);
         add(monedero);
         monedero.setBounds(350, 260, 80, 100);
-        setLayer(moneda_GUI10, 2);
-        add(moneda_GUI10);
-        moneda_GUI10.setBounds(460, 460, 30, 30);
 
-        moneda_GUI1.setMoneda(new Moneda1500());
+        moneda_GUI1.setMoneda(new Moneda1000());
         setLayer(moneda_GUI1, 2);
         add(moneda_GUI1);
-        moneda_GUI1.setBounds(290, 90, 30, 30);
-
-        bebida_GUI2.setBebida(new Bilz(5));
-        setLayer(bebida_GUI2, 2);
-        add(bebida_GUI2);
-        bebida_GUI2.setBounds(130, 390, 20, 34);
-
-        bebida_GUI3.setBebida(new CocaCola(5));
-        setLayer(bebida_GUI3, 2);
-        add(bebida_GUI3);
-        bebida_GUI3.setBounds(400, 160, 20, 34);
-        setLayer(bebida_GUI1, 2);
-        add(bebida_GUI1);
-        bebida_GUI1.setBounds(60, 330, 20, 34);
+        moneda_GUI1.setBounds(290, 190, 30, 30);
 
         getAccessibleContext().setAccessibleName("");
     }// </editor-fold>//GEN-END:initComponents
@@ -230,7 +205,6 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
             }
 
         }
-        System.out.println("Comp en Layer 2: " + this.getComponentCountInLayer(2));
     }//GEN-LAST:event_formMousePressed
 
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
@@ -245,10 +219,6 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
 
     }//GEN-LAST:event_formMouseDragged
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
         compr.setNumBebida(4);
         compr.comprar();
@@ -259,16 +229,12 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private tarea_3.Bebida_GUI bebida_GUI1;
-    private tarea_3.Bebida_GUI bebida_GUI2;
-    private tarea_3.Bebida_GUI bebida_GUI3;
     private tarea_3.Expendedor_GUI expendedor;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private tarea_3.Moneda_GUI moneda_GUI1;
-    private tarea_3.Moneda_GUI moneda_GUI10;
     private tarea_3.Monedero_GUI monedero;
     // End of variables declaration//GEN-END:variables
 }

@@ -74,7 +74,6 @@ public class Expendedor_GUI extends javax.swing.JLayeredPane {
 
     public void entregarVuelto() {
         this.createDepMoneda();
-        System.out.println("Monedas:" + exp.getCantMonedas());
         depMonedas.setCantMonedas(exp.getCantMonedas());
     }
 
@@ -140,11 +139,6 @@ public class Expendedor_GUI extends javax.swing.JLayeredPane {
         almacen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Glass.png"))); // NOI18N
         almacen.setContentAreaFilled(false);
         almacen.setPreferredSize(new java.awt.Dimension(124, 145));
-        almacen.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                almacenMousePressed(evt);
-            }
-        });
         almacen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 almacenActionPerformed(evt);
@@ -220,10 +214,6 @@ public class Expendedor_GUI extends javax.swing.JLayeredPane {
         }
         this.getParent().dispatchEvent(evt);
     }//GEN-LAST:event_formMouseReleased
-
-    private void almacenMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_almacenMousePressed
-        System.out.println(evt.getX()+ "  " + evt.getY());
-    }//GEN-LAST:event_almacenMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
