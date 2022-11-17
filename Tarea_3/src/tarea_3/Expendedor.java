@@ -5,14 +5,14 @@ import java.util.ArrayList;
 public class Expendedor {
 
     private final ArrayList<Bebida>[] depBebida;
-    private final ArrayList<Moneda> depositoMonedas;;
-    private Bebida bebida;
+    private final ArrayList<Bebida> bebidasCompradas;
+    private final ArrayList<Moneda> depositoMonedas;
     private int precioBebidas;
     private final int cantidadPorDept;
 
     public Expendedor(int cantidadPorDep, int precio) {
-        bebida = null;
         cantidadPorDept = cantidadPorDep;
+        bebidasCompradas = new ArrayList();
         depositoMonedas = new ArrayList();
         depBebida = new ArrayList[4];
         for (int i = 0; i < depBebida.length; i++) {
@@ -24,11 +24,6 @@ public class Expendedor {
     public void setPrecioBebida(int precio) {
         precioBebidas = precio;
     }
-    
-    public void setBebida(Bebida b){
-        bebida = b;
-    }
-
     public int getPrecioBebidas() {
         return precioBebidas;
     }
@@ -42,8 +37,21 @@ public class Expendedor {
         return depositoMonedas.size();
     }
     
-    public Bebida getBebida() {
-        return this.bebida;
+    public Bebida getBebida(){
+        if(bebidasCompradas.isEmpty()){
+            return null;
+        }else{
+            return bebidasCompradas.get(0);
+        }
+    }
+    
+    public Bebida removerBebida(){
+        
+        if(bebidasCompradas.isEmpty()){
+            return null;
+        }else{
+            return bebidasCompradas.remove(0);
+        }
     }
 
     public void comprarBebida(Moneda moneda, int numBebida) {
@@ -51,7 +59,6 @@ public class Expendedor {
             moneda.toString();
         } catch (Exception e) {
             System.out.println("Error,PagoIncorrectoException");
-            this.bebida = null;
         }
         try {
             if (numBebida < 1 || numBebida > 4) {
@@ -60,11 +67,10 @@ public class Expendedor {
         } catch (Exception e) {
             depositoMonedas.add(moneda);
             System.out.println("Error,DepositoInexistenteException");
-            this.bebida = null;
         }
         try {
             if (moneda.getValor() > this.precioBebidas) {
-                this.bebida = depBebida[numBebida - 1].remove(0);
+                bebidasCompradas.add(depBebida[numBebida - 1].remove(0));
                 for (int i = moneda.getValor() - this.precioBebidas; i > 0; i -= 100) {
                     depositoMonedas.add(new Moneda100());
                 }
@@ -72,17 +78,17 @@ public class Expendedor {
             } else if (moneda.getValor() < this.precioBebidas) {
                 depositoMonedas.add(moneda);
                 System.out.println("Error,PagoInsuficienteException");
-                this.bebida = null;
             } else {
-                this.bebida = depBebida[numBebida - 1].remove(0);
+                bebidasCompradas.add(depBebida[numBebida - 1].remove(0));
             }
         } catch (Exception e) {
             if(moneda!=null){
                 depositoMonedas.add(moneda);
                 System.out.println("Error,NoHayBebidaException");
-                this.bebida = null;
             }
         }
+        
+        System.out.println("bebidas: " + bebidasCompradas.size());
     }
     
     public void rellenarDepBebidas(int dep){
@@ -110,6 +116,7 @@ public class Expendedor {
     }
 
     public Moneda getVuelto() {
+        
         if(depositoMonedas.isEmpty()){
             return null;
         }else{

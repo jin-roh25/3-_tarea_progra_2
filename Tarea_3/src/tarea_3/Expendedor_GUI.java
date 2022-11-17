@@ -33,7 +33,7 @@ public class Expendedor_GUI extends javax.swing.JLayeredPane {
     }
 
     public Bebida getBebida() {
-        return exp.getBebida();
+        return exp.removerBebida();
     }
 
     public Moneda getVuelto() {
@@ -67,18 +67,14 @@ public class Expendedor_GUI extends javax.swing.JLayeredPane {
         }
     }
 
-    public void entregarBebida(boolean v) {
-
-        if (v == false) {
-            exp.setBebida(null);
-        }
+    public void entregarBebida() {
         this.createDepBebida();
         depBebida.setBebida(exp.getBebida());
     }
 
     public void entregarVuelto() {
         this.createDepMoneda();
-        System.out.println(exp.getCantMonedas());
+        System.out.println("Monedas:" + exp.getCantMonedas());
         depMonedas.setCantMonedas(exp.getCantMonedas());
     }
 

@@ -159,7 +159,7 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
         compr.setNumBebida(1);
         compr.comprar();
         expendedor.sincronizarDeposito();
-        expendedor.entregarBebida(true);
+        expendedor.entregarBebida();
         expendedor.entregarVuelto();
 
     }//GEN-LAST:event_jButton1MouseClicked
@@ -168,7 +168,7 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
         compr.setNumBebida(2);
         compr.comprar();
         expendedor.sincronizarDeposito();
-        expendedor.entregarBebida(true);
+        expendedor.entregarBebida();
         expendedor.entregarVuelto();
     }//GEN-LAST:event_jButton2MouseClicked
 
@@ -176,7 +176,7 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
         compr.setNumBebida(3);
         compr.comprar();
         expendedor.sincronizarDeposito();
-        expendedor.entregarBebida(true);
+        expendedor.entregarBebida();
         expendedor.entregarVuelto();
     }//GEN-LAST:event_jButton3MouseClicked
 
@@ -209,7 +209,7 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
             this.revalidate();
             this.repaint();
 
-            expendedor.entregarBebida(false);
+            expendedor.entregarBebida();
         }
         if (evt.getSource().getClass() == DepositoMoneda_GUI.class) {
             monedaSacada = new Moneda_GUI();
@@ -253,7 +253,7 @@ public class PanelPrincipal extends javax.swing.JLayeredPane {
         compr.setNumBebida(4);
         compr.comprar();
         expendedor.sincronizarDeposito();
-        expendedor.entregarBebida(true);
+        expendedor.entregarBebida();
         expendedor.entregarVuelto();
     }//GEN-LAST:event_jButton4MouseClicked
 

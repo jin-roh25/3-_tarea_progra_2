@@ -32,7 +32,6 @@ public class Comprador{
             try{
                 exp.comprarBebida(m, numBebida);
                 m = null;
-                this.beber(exp.getBebida());
             }catch(Exception e){
                 System.out.print("");
             }
