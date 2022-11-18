@@ -18,8 +18,6 @@ public class Ventana extends JFrame {
         p.setSize(500, 500);
         this.add(p, BorderLayout.CENTER);
 
-        System.out.println(this.getSize());
-
         this.setVisible(true);
     }
 }
